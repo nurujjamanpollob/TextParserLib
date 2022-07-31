@@ -1,5 +1,5 @@
 # TextParserLib
-A light-weight Java library to parse text with identifier and than replace the identifier with it's value. supports both synchronous and asynchronous mode.
+A light-weight Java library to parse text with identifier and then replace the identifier with its value. supports both synchronous and asynchronous mode.
 
 As this library is very simple, it's also very easy to work with. Consider this scenario, where you need to parse this text:
 
@@ -14,14 +14,26 @@ and start tag of *( and
 
 the end tag of )* <b>(Sorry for Github is interpreting my text wrong, so I can't maintain good formatting) </b>
 
-So, this library read them by factors such as tag start, tag end and idenfier text range.
+So, this library read them by factors such as tag start, tag end and identifier text range.
 
-So, later on, those tag with identifier will be replace by their value passed with key value pair, for example <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/d66a87b575e6401642193f36e0b2d10f3abfddf2/src/main/java/dev/nurujjamanpollob/textparserlib/parser/TextParser.java#L106">TextParser(String textToParse, Template template, Map<String, String> keyValuePairs)</a>
+So, later on, those tag with identifier will be replaced by their value passed with key value pair, for example <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/d66a87b575e6401642193f36e0b2d10f3abfddf2/src/main/java/dev/nurujjamanpollob/textparserlib/parser/TextParser.java#L106">public TextParser(String textToParse, Template template, Map<String, String> keyValuePairs)</a>
 
 
 Or passed by method reference from <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/d66a87b575e6401642193f36e0b2d10f3abfddf2/src/main/java/dev/nurujjamanpollob/textparserlib/parser/TextParser.java#L323">TextParser#putVariableNameAndValue(String variableName, String variableValue)</a>
 
-Okay, let's dive into implementation part, where, I gonna cover both asynchronous and synchronous implementation technic with code example.
+Okay, let's dive into implementation part, where, I will cover both asynchronous and synchronous implementation technic with code example.
+
+## Building this library
+
+<b>cd</b> to the root directory of this project. This project is usages gradle <b><i>7.4</i></b>, so you must have this version or later version in the <b>PATH</b>.
+
+To check, which version you have installed, run <pre><code>gradle --version</code></pre>
+
+Now, run this command to build the project:
+
+<pre><code>gradle jar</code></pre>
+
+The output will be there -> <b><i>build/libs/textparserlib-{version}.jar</i></b>
 
 ## Synchronous Implementation
 
