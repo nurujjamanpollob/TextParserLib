@@ -59,6 +59,7 @@
 
 package dev.nurujjamanpollob.textparserlib.parser;
 
+import dev.nurujjamanpollob.textparserlib.KeyObjects;
 import dev.nurujjamanpollob.textparserlib.Template;
 import dev.nurujjamanpollob.textparserlib.Variable;
 import dev.nurujjamanpollob.textparserlib.event.ParseEventListener;
@@ -300,6 +301,8 @@ public class TextParser {
      */
     private String getValueFromKeyValuePairs(String key) throws TemplateException{
 
+        // So, here, we got the key, this may contain parameters or flags, we need to read them all.
+
         for (Map.Entry<String, String> entry : keyValuePairs.entrySet()) {
             if(entry.getKey().equals(key)){
                 return entry.getValue();
@@ -322,6 +325,33 @@ public class TextParser {
      */
     public void putVariableNameAndValue(String variableName, String variableValue){
         keyValuePairs.put(variableName, variableValue);
+    }
+
+    //TODO: Need implementation
+    private KeyObjects generateKeyObjectFromIdentifier(String keyIdentifier){
+
+        Boolean isOptional = false;
+        String key = "";
+        String keyDefValue = "";
+
+        // First check, if the key started with quotation mark, then it is optional.
+
+        boolean isSpaceMatched = false;
+
+        for (int i = 0; i < keyIdentifier.length(); i++) {
+
+            if(keyIdentifier.charAt(i) != ' '){
+                isSpaceMatched = true;
+            }
+
+            // check for quotation mark, if found, then it is optional.
+            //
+
+
+
+        }
+
+        return new KeyObjects(isOptional, key, keyDefValue);
     }
 
 }
