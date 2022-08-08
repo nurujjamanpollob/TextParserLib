@@ -144,7 +144,7 @@ If you want to study the asynchronous implementation a bit, you can look at this
 
 ## Define optionals
 
-From version 2.0.0, you can define optionals using a <b>(?)</b> before the identifier name. You also define a parameter named <b>defVal="Default Value" </b> to define the default value of the identifier.
+From version 2.0.0, you can define optionals using a <b>(?)</b> before the identifier name. You also need to define a parameter named <b>defVal="Default Value" </b> to define the default value of the identifier.
 
 This library only take optional value, when you do not pass value for the identifier. <br />
 This example shows you how to do it:
