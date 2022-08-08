@@ -81,7 +81,7 @@ Now, call <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/d66a87
  You can also skip creating a new instance of <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/main/java/dev/nurujjamanpollob/textparserlib/parser/TextParser.java">TextParser</a>, instead, calling <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/main/java/dev/nurujjamanpollob/textparserlib/Template.java#L144">Template#parseSynchronously(String text, HashMap<String, String> keyValueSets)</a> will do same job!
  
  
- In case, you need to study the synchronous implementation a little bit more, you can check this Unit test class: <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/test/java/dev/nurujjamanpollob/textparserlibtestpackage/TextParserSynchronousTest.java">TextParserSynchronousTest.java</a>
+ In case, you need to study the synchronous implementation a little more, you can check this Unit test class: <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/test/java/dev/nurujjamanpollob/textparserlibtestpackage/TextParserSynchronousTest.java">TextParserSynchronousTest.java</a>
  
  
  ## Asynchronous implementation
@@ -136,10 +136,63 @@ Now, call <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/d66a87
 	</code>
 </pre>
 
+
 You can also skip create a new instance of <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/main/java/dev/nurujjamanpollob/textparserlib/parser/TextParser.java">TextParser</a>, instead calling <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/main/java/dev/nurujjamanpollob/textparserlib/Template.java#L169"> Template#parseAsynchronously(String text, HashMap<String, String> keyValueSets, ParseEventListener parseEventListener) </a> can do the same job!
 
 If you want to study the asynchronous implementation a bit, you can look at this unit test class from here: <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/test/java/dev/nurujjamanpollob/textparserlibtestpackage/TextParserAsynchronousTest.java">TextParserAsynchronousTest.java</a>
 
+
+## Define optionals
+
+From version 2.0.0, you can define optionals using a <b>(?)</b> before the identifier name. You also define a parameter named <b>defVal="Default Value" </b> to define the default value of the identifier.
+
+This library only take optional value, when you do not pass value for the identifier. <br />
+This example shows you how to do it:
+
+<pre>
+<code> String textToParse = "Hi, I am *(?name defVal="Nurujjaman Pollob")* and I am *(?age defVal="22")* years old. </code>
+</pre>
+
+it's safe to use optionals, If you do not pass value for the identifier, it will use the default value than.
+
+This example, going to show you, how to use optionals with default value and override the default value.
+
+<pre>
+<code>
+        String text = "Hi, I am *(?name defVal=\"John Doe\")* and I am *(?age defVal=\"20\")* years old.";
+
+        // Create template instance
+        Template template = new Template("*(", ")*");
+        // Create parser instance
+        TextParser parser = new TextParser(text, template);
+        // Override optional identifier(name) with a new value 
+        parser.putVariableNameAndValue("name", "Nurujjaman Pollob");
+        // Parse synchronously
+        String parsedText = parser.parseSynchronously();
+</code>
+</pre>
+
+So, you see, it's fun to use optionals. If you noticed that, we stop read the text when we match the double quote, so what you do if you want to use double quote in optional value.
+
+This library support the escaped character to allow you to do this, let's look at this example:
+
+<pre>
+<code>
+        String text = "Hi, I am *(?name defVal="*"John*"")* and I am *(?age defVal="20")* years old.";
+        String matchTo = "Hi, I am "John" and I am 20 years old.";
+
+        // Create template instance
+        Template template = new Template("*(", ")*");
+        // Create parser instance
+        TextParser parser = new TextParser(text, template);
+        // Parsed text
+        String parsedText = parser.parseSynchronously();
+</code>
+</pre>
+
+This parsed text match with the matchTo string, so, you can see, you can use escaped character in optionals.
+
+If you would like to learn more, look at this test class <a href="https://github.com/nurujjamanpollob/TextParserLib/blob/master/src/test/java/dev/nurujjamanpollob/textparserlibtestpackage/TextParserOptionalTest.java">TextParserOptionalTest.java</a>
 
 Any contribution, suggestions are highly welcome.
  

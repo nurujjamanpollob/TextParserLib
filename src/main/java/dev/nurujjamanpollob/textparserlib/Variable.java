@@ -70,5 +70,5 @@ public final class Variable {
     /**
      * Library version number
      */
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "2.0.0";
 }

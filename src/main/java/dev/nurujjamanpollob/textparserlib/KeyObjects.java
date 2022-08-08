@@ -60,4 +60,34 @@
 package dev.nurujjamanpollob.textparserlib;
 
 
-public record KeyObjects(Boolean isOptional, String keyName, String optionalKeyVal) {}
+public final class KeyObjects{
+
+    private final boolean isOptional;
+    private final String keyName;
+    private final String optionalValue;
+
+    public KeyObjects(Boolean isOptional, String keyName, String optionalKeyVal) {
+
+        this.isOptional = isOptional;
+        this.keyName = keyName;
+        this.optionalValue = optionalKeyVal;
+
+    }
+
+    private KeyObjects(){
+
+        throw new IllegalStateException("This class can not be instantiated without parameters");
+    }
+
+    public boolean isOptional() {
+        return isOptional;
+    }
+
+    public String getKeyName() {
+        return keyName;
+    }
+
+    public String getOptionalValue() {
+        return optionalValue;
+    }
+}
